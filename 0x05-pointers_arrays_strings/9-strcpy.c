@@ -10,10 +10,12 @@
 	{
 	int a;
 
-		for (a = 0; src[a] != '\0'; a++)
+		while (src[a] != '\0')
 		{
 			dest[a] = src[a];
-			dest[a] = '\0';
+			a++;
 		}
+			dest[a] = '\0';
+
 		return (dest);
 	}
