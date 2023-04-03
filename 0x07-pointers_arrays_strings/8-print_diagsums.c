@@ -19,13 +19,13 @@ void print_diagsums(int *a, int size)
 
 	s = (size * size) - 1;
 
-	for (i = 0; i <= s; i = i + (s + 1))
+	for (i = 0; i <= s; i += (size + 1))
 	{
-		sumdiag1 = sumdiag1 + a[i];
+		sumdiag1 += a[i];
 	}
-	for (i = (s - 1); i < s; i = i + (s - 1))
+	for (i = size - 1; i < s; i += (size - 1))
 	{
-		sumdiag2 = sumdiag2 + a[i];
+		sumdiag2 += a[i];
 	}
-	printf("%d, %d\n", sumdiag1, sumdiag2);
+	printf("%u, %u\n", sumdiag1, sumdiag2);
 }
