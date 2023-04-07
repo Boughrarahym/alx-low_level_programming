@@ -11,22 +11,42 @@
 
 int main(int argc, char *argv[])
 {
-	int sum = 0, b, h;
+	int cents, num_coins = 0;
 
-	for (h = 1; h < argc; h++)
-	{
-		for (b = 0; argv[h][b] != '\0'; b++)
-	{
-		if (argv[h][b] < '0' || argv[h][b] > '9')
+	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
+	else
+	{
+		cents = atoi(argv[1]);
+		while (cents > 0)
+		{
+			num_coins++;
+	if ((cents - 25) >= 0)
+	{
+		cents -= 25;
+		continue;
 	}
-	sum += atoi(argv[h]);
+	if ((cents - 10) >= 0)
+	{
+		cents -= 10;
+		continue;
 	}
-
-	printf("%d\n", sum);
-
+	if ((cents - 5) >= 0)
+	{
+		cents -= 5;
+		continue;
+	}
+	if ((cents - 2) >= 0)
+	{
+		cents -= 2;
+		continue;
+	}
+	cents--;
+		}
+	}
+	printf("%d\n", num_coins);
 	return (0);
 }
