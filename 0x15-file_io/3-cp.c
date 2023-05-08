@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * create_buffer - function that allocates 1024 bytes for a buffer
+ * create_buff - function that allocates 1024 bytes for a buffer
  * @file: The name of the file buffer is storing chars for
  *
  * Return: pointer to the new allocated buffer
@@ -56,12 +56,10 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
 	buff = create_buff(argv[2]);
 	f_from = open(argv[1], O_RDONLY);
 	rd = read(f_from, buff, 1024);
 	f_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-
 	do {
 		if (f_from == -1 || rd == -1)
 		{
@@ -70,7 +68,6 @@ int main(int argc, char *argv[])
 			free(buff);
 			exit(98);
 		}
-
 		wt = write(f_to, buff, rd);
 		if (f_to == -1 || wt == -1)
 		{
@@ -79,12 +76,10 @@ int main(int argc, char *argv[])
 			free(buff);
 			exit(99);
 		}
-
 		rd = read(f_from, buff, 1024);
 		f_to = open(argv[2], O_WRONLY | O_APPEND);
 
 	} while (rd > 0);
-
 	free(buff);
 	close_file(f_from);
 	close_file(f_to);
